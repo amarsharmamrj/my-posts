@@ -1,0 +1,53 @@
+#post {
+  height: 38px;
+  width: 55%;
+  margin-right: 20px;
+}
+
+/* posts table */
+table thead tr{
+  background-color: #007bff;
+  color: white;
+}
+
+table tbody tr:nth-child(even){
+  background-color: #d8eafd;
+}
+
+table tbody tr td::first-letter{
+  text-transform: uppercase;
+}
+
+
+/* post */
+.card {
+  border-radius: 10px;
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.header {
+  background-color: rgb(158 195 235);
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  padding: 0.5rem 1reml;
+}
+
+.header h1{
+  font-size: 22px;
+  padding: 0.5rem 1rem;
+}
+
+.header h1::first-letter{
+  text-transform: uppercase;
+}
+
+.body p::first-letter{
+  text-transform: uppercase;
+}
+
+.body {
+  padding: 1rem;
+  font-size: 20px;
+}
