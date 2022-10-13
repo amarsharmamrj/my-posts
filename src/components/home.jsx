@@ -46,6 +46,8 @@ const Home = () => {
         setPosts([data, ...posts])
         window.localStorage.setItem("posts", JSON.stringify(([data, ...posts])));
         console.log("new data:", posts)
+        document.querySelector("#post").value = "";
+        document.querySelector("#body").value = "";
     }
 
     return (
