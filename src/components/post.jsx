@@ -36,7 +36,7 @@ const Post = () => {
             let posts = JSON.parse(window.localStorage.getItem("posts"))
             let post;
             if(posts.length > 0){
-                post = posts.find((item) => item.id == params.id)
+                post = posts.find((item) => item.id === params.id)
             } 
             setPost(post)
             setDataLoaded(true)
