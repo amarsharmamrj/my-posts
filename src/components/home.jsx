@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 const Home = () => {
     const history = useNavigate()
@@ -19,6 +20,7 @@ const Home = () => {
                 console.log(data)
                 setDataLoaded(true)
                 setPosts(posts.concat(data))
+                window.localStorage.setItem("posts", JSON.stringify(posts.concat(data)));
                 console.log("posts:", posts)
                 setLoading(false)
             })
@@ -37,10 +39,12 @@ const Home = () => {
     const handleAddpost = (e) => {
         e.preventDefault();
         console.log("handleAddpost function called")
-        let title = document.querySelector("#post").value
-        let data = {title: title}
+        let id = uuidv4();
+        let title = document.querySelector("#post").value;
+        let body = document.querySelector("#body").value;
+        let data = {title: title, body: body, id: id, }
         setPosts([data, ...posts])
-        
+        window.localStorage.setItem("posts", JSON.stringify(([data, ...posts])));
         console.log("new data:", posts)
     }
 
@@ -60,8 +64,9 @@ const Home = () => {
                             )
                         }
                     </div>
-                    <div className="col-md-12 text-center mt-2 mb-4">
-                        <input type="text" placeholder='Enter title for your post..' name="post" id="post" />
+                    <div className="col-md-12 text-center mt-2 mb-4 addPost">
+                        <input type="text" placeholder='Enter title for your post..' name="post" id="post" /><br/>
+                        <textarea type="textarea" placeholder='Enter body for your post..' name="body" id="body"></textarea><br/>
                         <button type="button" onClick={handleAddpost} className="btn btn-primary">Add New Post</button>
                     </div>
                 </div>
