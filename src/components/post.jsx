@@ -30,7 +30,19 @@ const Post = () => {
         history("/")
     }
     useEffect(() => {
-        handleFetchPostBody(params.id);
+        console.log("id:", typeof(params.id))
+        console.log("id:", params.id.includes("-"))
+        if(params.id.includes("-")){
+            let posts = JSON.parse(window.localStorage.getItem("posts"))
+            let post;
+            if(posts.length > 0){
+                post = posts.find((item) => item.id == params.id)
+            } 
+            setPost(post)
+            setDataLoaded(true)
+        }else {
+            handleFetchPostBody(params.id);
+        }
     }, [params.id])
     return (
         <div className="container mt-4">
